@@ -1,0 +1,18 @@
+<%- include("partials/header.ejs") %>
+
+<h1 class="text-center mb-3">Hello Everyone! 👋</h1>
+<p>This is the capstone project for section 26 on <a href="https://www.udemy.com/course/the-complete-web-development-bootcamp/">The Complete 2023 Web Development Bootcamp</a>. The goal of this project is to create a Blog web application using Node.js, Express.js, and EJS. The application will allow users to create and view blog posts. Posts will not persist between sessions as no database will be used in this version of the application.</p>
+
+<% if (locals.blogPosts) { %>
+    <% for (let i = 0; i < blogPosts.length; i++) { %>
+        <div class="bg-light p-5 rounded mt-3">
+            <h2><%= blogPosts[i]["title"] %></h2>
+            <p class="lead"><%= blogPosts[i]["content"].slice(0, 120).replace(/<(.|\n)*?>/g, '') %>....</p>
+            <a class="btn btn-lg btn-primary" href="post/<%= blogPosts[i]["id"] %>" role="button">Read More »</a>
+          </div>
+    <% } %>
+<% } else { %>
+    <p class="lead text-center mt-5">It seems like you have no post yet. Please <a href="/create">create a new post</a></p>
+<% } %>
+
+<%- include("partials/footer.ejs") %>

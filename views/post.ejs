@@ -1,0 +1,17 @@
+<%- include("partials/header.ejs") %>
+
+<% if (locals.post) { %>
+  <div class="d-flex gap-2 justify-content-end">
+    <a href="/edit/<%= post.id %>" class="btn btn-warning action-button">Edit</a>
+    <form action="/delete/<%= post.id %>" method="post">
+      <button type="submit" value="submit" class="btn btn-danger action-button">Delete</button>
+    </form>
+  </div>
+  
+  <h1><%= post.title %></h1>
+  <p><%= post.content %></p>
+<% } else { %>
+  <h1>404 Post Not Found</h1>
+<% } %>
+
+<%- include("partials/footer.ejs") %>
